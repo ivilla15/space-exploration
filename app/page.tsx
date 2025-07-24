@@ -1,6 +1,6 @@
 "use client";
 
-import type React from "react";
+import React from "react";
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
@@ -425,54 +425,10 @@ export default function SpaceExplorationJourney() {
                   index % 2 === 1 ? "lg:order-2" : ""
                 }`}
               >
-                <div className="relative" style={{ perspective: "1000px" }}>
-                  {/* Glow around planet */}
-<div
-  className="absolute inset-0 rounded-full blur-3xl opacity-10"
-  style={{
-    background: "radial-gradient(circle, white 0%, transparent 60%)",
-    transform: "scale(1.6)",
-  }}
-/>
-
-{/* Planet container */}
-<div
-  className={`${planet.size} rounded-full relative overflow-hidden shadow-2xl cursor-grab active:cursor-grabbing select-none transition-transform duration-300 hover:scale-105`}
-  style={{
-    backgroundImage: `url('/images/${planet.id}.webp')`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    transform: \`
-  rotateX(\${planetRotations[planet.id]?.x ?? 8}deg)
-  rotateY(\${planetRotations[planet.id]?.y ?? 20}deg)
-  scale(${visibleSections.has(planet.id) ? "1" : "0.85"})
-\`,
-    transformStyle: "preserve-3d",
-    willChange: "transform",
-    boxShadow: \`
-      inset -20px -20px 60px rgba(0, 0, 0, 0.4),
-      0 0 60px rgba(255, 255, 255, 0.05)
-    \`,
-  }}
-  onMouseDown={(e) => handlePlanetMouseDown(planet.id, e)}
-  onTouchStart={(e) => handlePlanetTouchStart(planet.id, e)}
->
-  {/* Gradient shading */}
-  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-black/30 via-transparent to-white/5 pointer-events-none z-10" />
-
-  {/* Highlight spot */}
-  <div
-    className="absolute top-6 left-6 w-8 h-8 bg-white/10 rounded-full blur-lg"
-    style={{ transform: "translateZ(20px)", mixBlendMode: "screen" }}
-  />
-</div>
-
-{/* Hint text */}
-<div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs text-slate-400 opacity-60">
-  Drag to rotate
-</div>
-
-                </div>
+                <div
+                  className="relative"
+                  style={{ perspective: "1000px" }}
+                ></div>
               </div>
 
               {/* Planet Information */}
