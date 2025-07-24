@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Planet3D from "@/components/Planet3D";
 import { Badge } from "@/components/ui/badge";
 import {
   Rocket,
@@ -425,10 +426,9 @@ export default function SpaceExplorationJourney() {
                   index % 2 === 1 ? "lg:order-2" : ""
                 }`}
               >
-                <div
-                  className="relative"
-                  style={{ perspective: "1000px" }}
-                ></div>
+                <div className="relative" style={{ perspective: "1000px" }}>
+                  <Planet3D texturePath={`/images/${planet.id}.webp`} />
+                </div>
               </div>
 
               {/* Planet Information */}
