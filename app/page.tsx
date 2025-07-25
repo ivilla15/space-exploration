@@ -1,28 +1,14 @@
 "use client";
 
+import { Rocket, Star, Thermometer, Zap, Globe, Wind, Orbit } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Planet3D from "@/components/Planet3D";
 import { Badge } from "@/components/ui/badge";
-import {
-  Rocket,
-  Star,
-  Thermometer,
-  Zap,
-  Globe,
-  Wind,
-  Orbit,
-} from "lucide-react";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const planets = [
   {
@@ -138,9 +124,7 @@ interface PlanetRotation {
 
 export default function SpaceExplorationJourney() {
   const [scrollY, setScrollY] = useState(0);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(
-    new Set()
-  );
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [planetRotations, setPlanetRotations] = useState<{
     [key: string]: PlanetRotation;
   }>({});
@@ -176,10 +160,7 @@ export default function SpaceExplorationJourney() {
       });
     };
 
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     Object.values(sectionRefs.current).forEach((ref) => {
       if (ref) observer.observe(ref);
@@ -199,24 +180,18 @@ export default function SpaceExplorationJourney() {
     }
   };
 
-  const handlePlanetMouseDown = useCallback(
-    (planetId: string, e: React.MouseEvent) => {
-      e.preventDefault();
-      setIsDragging(planetId);
-      dragStartRef.current = { x: e.clientX, y: e.clientY };
-    },
-    []
-  );
+  const handlePlanetMouseDown = useCallback((planetId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(planetId);
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+  }, []);
 
-  const handlePlanetTouchStart = useCallback(
-    (planetId: string, e: React.TouchEvent) => {
-      e.preventDefault();
-      setIsDragging(planetId);
-      const touch = e.touches[0];
-      dragStartRef.current = { x: touch.clientX, y: touch.clientY };
-    },
-    []
-  );
+  const handlePlanetTouchStart = useCallback((planetId: string, e: React.TouchEvent) => {
+    e.preventDefault();
+    setIsDragging(planetId);
+    const touch = e.touches[0];
+    dragStartRef.current = { x: touch.clientX, y: touch.clientY };
+  }, []);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
@@ -292,9 +267,7 @@ export default function SpaceExplorationJourney() {
               style={{
                 left: `${star.x}%`,
                 top: `${star.y}%`,
-                transform: `translateY(${
-                  scrollY * (0.1 + star.z * 0.05)
-                }px) translateZ(0)`,
+                transform: `translateY(${scrollY * (0.1 + star.z * 0.05)}px) translateZ(0)`,
               }}
             >
               <div
@@ -371,9 +344,8 @@ export default function SpaceExplorationJourney() {
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-            Embark on an extraordinary journey through our solar system.
-            Discover the mysteries and wonders of each planet as you travel
-            through the cosmos.
+            Embark on an extraordinary journey through our solar system. Discover the mysteries and
+            wonders of each planet as you travel through the cosmos.
           </p>
 
           <Button
@@ -421,20 +393,14 @@ export default function SpaceExplorationJourney() {
           >
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Interactive Planet */}
-              <div
-                className={`flex justify-center ${
-                  index % 2 === 1 ? "lg:order-2" : ""
-                }`}
-              >
+              <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative" style={{ perspective: "1000px" }}>
                   <Planet3D texturePath={`/images/${planet.id}.webp`} />
                 </div>
               </div>
 
               {/* Planet Information */}
-              <div
-                className={`space-y-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}
-              >
+              <div className={`space-y-8 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
                 <div>
                   <Badge
                     variant="secondary"
@@ -502,8 +468,8 @@ export default function SpaceExplorationJourney() {
             MISSION COMPLETE
           </h2>
           <p className="text-xl text-slate-300 mb-12 max-w-3xl mx-auto">
-            You've successfully journeyed through our entire solar system. Ready
-            to explore the universe beyond?
+            You&apos;ve successfully journeyed through our entire solar system. Ready to explore the
+            universe beyond?
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
