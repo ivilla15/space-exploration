@@ -1,6 +1,6 @@
 "use client";
 
-import { Rocket, Star, Thermometer, Zap, Globe, Orbit } from "lucide-react";
+import { Rocket, Star, Globe, Orbit, Check, HardHatIcon } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -15,29 +15,27 @@ const planets = [
     id: "mercury",
     name: "Check-In",
     facts: [
-      "Closest planet to the Sun, completing an orbit in just 88 Earth days",
-      "Surface temperatures range from 800°F (427°C) during the day to -300°F (-184°C) at night",
+      "I am doing great!",
+      "Just watched Jurassic World movie it was pretty good.",
+      "Just Finished Section 3 Of AWS Course.",
     ],
-    icon: Thermometer,
+    subtitle: "Let's Dive In",
+    icon: Check,
     size: "w-32 h-32 md:w-48 md:h-48",
   },
   {
     id: "venus",
     name: "Updates",
-    facts: [
-      "Hottest planet in our solar system with surface temperatures of 900°F (482°C)",
-      "Rotates backwards and has the longest day - 243 Earth days",
-    ],
-    icon: Zap,
+    subtitle: "What Have I Been Working On?",
+    facts: ["U-Krew page", "Linter bug fixes", "AWS Course", "Portfolio Website"],
+    icon: HardHatIcon,
     size: "w-36 h-36 md:w-52 md:h-52",
   },
   {
     id: "earth",
     name: "What I've Accomplished",
-    facts: [
-      "The only known planet with life, 71% covered by water",
-      "Has plate tectonics that help regulate the planet's temperature",
-    ],
+    subtitle: "Check Them Out!",
+    facts: ["U-Krew Page 99% Done!", "Linter 100% fixed!"],
     icon: Globe,
     size: "w-36 h-36 md:w-52 md:h-52",
   },
@@ -378,7 +376,7 @@ export default function SpaceExplorationJourney() {
                   <CardHeader>
                     <CardTitle className="text-xl text-blue-400 flex items-center">
                       <planet.icon className="w-5 h-5 mr-2" />
-                      Key Facts
+                      {planet.subtitle}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
