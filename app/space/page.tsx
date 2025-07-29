@@ -1,6 +1,6 @@
 "use client";
 
-import { Rocket, Star, Thermometer, Zap, Globe, Orbit } from "lucide-react";
+import { Rocket, Star, Thermometer, Zap, Globe, Wind, Orbit } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const planets = [
   {
     id: "mercury",
-    name: "Check-In",
+    name: "Mercury",
     facts: [
       "Closest planet to the Sun, completing an orbit in just 88 Earth days",
       "Surface temperatures range from 800°F (427°C) during the day to -300°F (-184°C) at night",
@@ -23,7 +23,7 @@ const planets = [
   },
   {
     id: "venus",
-    name: "Updates",
+    name: "Venus",
     facts: [
       "Hottest planet in our solar system with surface temperatures of 900°F (482°C)",
       "Rotates backwards and has the longest day - 243 Earth days",
@@ -33,7 +33,7 @@ const planets = [
   },
   {
     id: "earth",
-    name: "What I've Accomplished",
+    name: "Earth",
     facts: [
       "The only known planet with life, 71% covered by water",
       "Has plate tectonics that help regulate the planet's temperature",
@@ -43,13 +43,53 @@ const planets = [
   },
   {
     id: "mars",
-    name: "What's On Deck?",
+    name: "Mars",
     facts: [
       "Known as the Red Planet due to iron oxide (rust) on its surface",
       "Home to the largest volcano in the solar system - Olympus Mons",
     ],
     icon: Orbit,
     size: "w-34 h-34 md:w-50 md:h-50",
+  },
+  {
+    id: "jupiter",
+    name: "Jupiter",
+    facts: [
+      "Largest planet with a mass greater than all other planets combined",
+      "Has over 80 moons and a Great Red Spot storm larger than Earth",
+    ],
+    icon: Wind,
+    size: "w-48 h-48 md:w-64 md:h-64",
+  },
+  {
+    id: "saturn",
+    name: "Saturn",
+    facts: [
+      "Famous for its spectacular ring system made of ice and rock particles",
+      "Less dense than water - it would float in a giant bathtub",
+    ],
+    icon: Orbit,
+    size: "w-44 h-44 md:w-60 md:h-60",
+  },
+  {
+    id: "uranus",
+    name: "Uranus",
+    facts: [
+      "Tilted on its side at 98 degrees, rotating like a rolling ball",
+      "Has the coldest atmosphere in the solar system at -371°F (-224°C)",
+    ],
+    icon: Orbit,
+    size: "w-40 h-40 md:w-56 md:h-56",
+  },
+  {
+    id: "neptune",
+    name: "Neptune",
+    facts: [
+      "Windiest planet with speeds reaching 1,200 mph (2,000 km/h)",
+      "Takes 165 Earth years to complete one orbit around the Sun",
+    ],
+    icon: Wind,
+    size: "w-38 h-38 md:w-54 md:h-54",
   },
 ];
 
@@ -290,22 +330,22 @@ export default function SpaceExplorationJourney() {
             <Image
               src="/images/astronaut-waving.webp?height=500&width=500"
               alt="Astronaut waving in space"
-              width={350}
-              height={350}
+              width={500}
+              height={500}
               className="mx-auto shadow-2xl relative z-10"
               priority
             />
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-7xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight">
-            Monthly
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight">
+            SPACE
             <br />
-            Report
+            EXPLORER
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-4xl mx-auto leading-relaxed font-light">
-            In this report I will talk about what I&apos;ve accomplished this month, what I am
-            currently working on, what&apos;s next and my monthly check-in.
+            Embark on an extraordinary journey through our solar system. Discover the mysteries and
+            wonders of each planet as you travel through the cosmos.
           </p>
 
           <Button
@@ -314,7 +354,7 @@ export default function SpaceExplorationJourney() {
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-xl px-12 py-6 rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 border-2 border-blue-400/30"
           >
             <Rocket className="w-6 h-6 mr-3" />
-            Learn More
+            START JOURNEY
           </Button>
         </div>
 
@@ -366,7 +406,7 @@ export default function SpaceExplorationJourney() {
                     variant="secondary"
                     className="mb-4 text-sm bg-slate-800/50 text-slate-300 border-slate-600"
                   >
-                    Section {index + 1} of 4
+                    Planet {index + 1} of 8
                   </Badge>
 
                   <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">
