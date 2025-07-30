@@ -1,10 +1,10 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { TextureLoader, Mesh } from "three";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useLoader } from "@react-three/fiber";
 import { useRef } from "react";
+import { TextureLoader, Mesh } from "three";
 
 type Props = {
   texturePath: string;
@@ -30,7 +30,7 @@ function PlanetMesh({ texturePath }: { texturePath: string }) {
 
 export default function Planet3D({ texturePath }: Props) {
   return (
-    <Canvas style={{ height: 300 }}>
+    <Canvas style={{ height: 700 }}>
       <ambientLight intensity={1} />
       <directionalLight position={[2, 2, 5]} />
       <PlanetMesh texturePath={texturePath} />
