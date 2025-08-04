@@ -3,11 +3,19 @@
 import { Rocket, Star, Thermometer, Zap, Globe, Wind, Orbit } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-
 import { useState, useEffect, useRef, useCallback } from "react";
+import Planet3D from "@/components/Planet3D";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
+export function useHydrated() {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+  return hydrated;
+}
 
 const planets = [
   {
@@ -121,6 +129,18 @@ interface PlanetRotation {
   y: number;
 }
 
+type Star = {
+  id: number;
+  x: number;
+  y: number;
+  z: number;
+  color: string;
+  brightness: number;
+  size: number;
+  twinkleDelay: number;
+  twinkleDuration: number;
+};
+
 export default function SpaceExplorationJourney() {
   const [scrollY, setScrollY] = useState(0);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
@@ -128,7 +148,14 @@ export default function SpaceExplorationJourney() {
     [key: string]: PlanetRotation;
   }>({});
   const [isDragging, setIsDragging] = useState<string | null>(null);
-  const [stars] = useState(() => generateStars(300));
+  const hydrated = useHydrated();
+const [stars, setStars] = useState<Star[]>([]);
+
+useEffect(() => {
+  if (hydrated) {
+    setStars(generateStars(300));
+  }
+}, [hydrated]);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const dragStartRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -259,30 +286,31 @@ export default function SpaceExplorationJourney() {
       {/* Realistic Deep Space Starscape */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-indigo-950/30">
-          {stars.map((star) => (
-            <div
-              key={star.id}
-              className="absolute"
-              style={{
-                left: `${star.x}%`,
-                top: `${star.y}%`,
-                transform: `translateY(${scrollY * (0.1 + star.z * 0.05)}px) translateZ(0)`,
-              }}
-            >
-              <div
-                className="rounded-full"
-                style={{
-                  width: `${star.size}px`,
-                  height: `${star.size}px`,
-                  backgroundColor: star.color,
-                  opacity: star.brightness,
-                  boxShadow: `0 0 ${star.size * 2}px ${star.color}`,
-                  animation: `twinkle ${star.twinkleDuration}s ease-in-out infinite`,
-                  animationDelay: `${star.twinkleDelay}s`,
-                }}
-              />
-            </div>
-          ))}
+          {hydrated &&
+  stars.map((star) => (
+    <div
+      key={star.id}
+      className="absolute"
+      style={{
+        left: `${star.x}%`,
+        top: `${star.y}%`,
+        transform: `translateY(${scrollY * (0.1 + star.z * 0.05)}px) translateZ(0)`,
+      }}
+    >
+      <div
+        className="rounded-full"
+        style={{
+          width: `${star.size}px`,
+          height: `${star.size}px`,
+          backgroundColor: star.color,
+          opacity: star.brightness,
+          boxShadow: `0 0 ${star.size * 2}px ${star.color}`,
+          animation: `twinkle ${star.twinkleDuration}s ease-in-out infinite`,
+          animationDelay: `${star.twinkleDelay}s`,
+        }}
+      />
+    </div>
+))}
         </div>
       </div>
 
@@ -394,7 +422,7 @@ export default function SpaceExplorationJourney() {
               {/* Interactive Planet */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative" style={{ perspective: "1000px" }}>
-                  {/* <Planet3D texturePath={`/images/${planet.id}.webp`} /> */}
+                  <Planet3D texturePath={`/Images/${planet.id}.webp`} />
                 </div>
               </div>
 
