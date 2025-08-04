@@ -312,7 +312,7 @@ useEffect(() => {
           <div className="mb-12 relative">
             <div />
             <Image
-              src="/images/astronaut-waving.webp?height=500&width=500"
+              src="/images/astronaut-waving.webp"
               alt="Astronaut waving in space"
               width={350}
               height={350}

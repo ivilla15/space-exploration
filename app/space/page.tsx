@@ -355,10 +355,10 @@ useEffect(() => {
           <div className="mb-12 relative">
             <div />
             <Image
-              src="/images/astronaut-waving.webp?height=500&width=500"
+              src="/images/astronaut-waving.webp"
               alt="Astronaut waving in space"
-              width={500}
-              height={500}
+              width={350}
+              height={350}
               className="mx-auto shadow-2xl relative z-10"
               priority
             />
@@ -422,7 +422,7 @@ useEffect(() => {
               {/* Interactive Planet */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative" style={{ perspective: "1000px" }}>
-                  <Planet3D texturePath={`/Images/${planet.id}.webp`} />
+                  <Planet3D texturePath={`/images/${planet.id}.webp`} />
                 </div>
               </div>
 
