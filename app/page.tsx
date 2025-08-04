@@ -5,7 +5,6 @@ import Image from "next/image";
 import React from "react";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Planet3D from "@/components/Planet3DClientOnly";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -353,7 +352,7 @@ export default function SpaceExplorationJourney() {
               {/* Interactive Planet */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative" style={{ perspective: "1000px" }}>
-                  <Planet3D texturePath={`/images/${planet.id}.webp`} />
+                  {/* <Planet3D texturePath={`/images/${planet.id}.webp`} /> */}
                 </div>
               </div>
 
