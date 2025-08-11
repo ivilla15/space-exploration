@@ -2,6 +2,7 @@
 
 import { Rocket, Star, Globe, Orbit, Check, HardHatIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Planet3D from "@/components/Planet3D";
@@ -26,7 +27,7 @@ const planets = [
     id: "venus",
     name: "Updates",
     subtitle: "What Have I Been Working On?",
-    facts: ["U-Krew page", "Linter bug fixes", "AWS Course", "Portfolio Website"],
+    facts: ["U-Krew page", "Linter bug fixes", "Count-Up Component", "AWS Course", "Portfolio Website"],
     icon: HardHatIcon,
     size: "w-36 h-36 md:w-52 md:h-52",
   },
@@ -34,7 +35,7 @@ const planets = [
     id: "earth",
     name: "What I've Accomplished",
     subtitle: "Check Them Out!",
-    facts: ["U-Krew Page 99% Done!", "Linter 100% fixed!"],
+    facts: ["U-Krew Page 100% Done!", "Linter 100% fixed!", "Count-Up Component 100% Done!"],
     icon: Globe,
     size: "w-36 h-36 md:w-52 md:h-52",
   },
@@ -42,8 +43,7 @@ const planets = [
     id: "mars",
     name: "What's On Deck?",
     facts: [
-      "Known as the Red Planet due to iron oxide (rust) on its surface",
-      "Home to the largest volcano in the solar system - Olympus Mons",
+      "Redesign Fraternities and Sororities page",
     ],
     icon: Orbit,
     size: "w-34 h-34 md:w-50 md:h-50",
@@ -358,16 +358,6 @@ useEffect(() => {
           ref={setRef(planet.id)}
           className="min-h-screen flex items-center justify-center px-4 py-20 relative"
         >
-          {/* Nebula Background */}
-          <div
-            className="absolute inset-0 opacity-5"
-            style={{
-              background: `radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%)`,
-              animation: "nebula 8s ease-in-out infinite",
-              transform: `translateY(${scrollY * 0.05}px)`,
-            }}
-          />
-
           <div
             className={`container mx-auto z-10 transition-all duration-1000 ${
               visibleSections.has(planet.id)
@@ -446,7 +436,7 @@ useEffect(() => {
       ))}
 
       {/* Final Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-t from-black to-slate-950">
+      <section className="min-h-screen flex items-center justify-center px-4 py-20 relative">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-black mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             MISSION COMPLETE
@@ -467,12 +457,15 @@ useEffect(() => {
             </Button>
 
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-slate-600 text-slate-300 hover:bg-slate-800 text-xl px-12 py-6 rounded-full bg-transparent"
             >
-              <Star className="w-6 h-6 mr-3" />
-              EXPLORE BEYOND
+              <Link href="/space">
+                <Star className="w-6 h-6 mr-3" />
+                Space Exploration
+              </Link>
             </Button>
           </div>
         </div>

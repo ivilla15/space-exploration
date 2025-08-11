@@ -2,6 +2,7 @@
 
 import { Rocket, Star, Thermometer, Zap, Globe, Wind, Orbit } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Planet3D from "@/components/Planet3D";
@@ -353,16 +354,16 @@ useEffect(() => {
           }}
         >
           <div className="mb-12 relative">
-            <div />
-            <Image
-              src="/images/astronaut-waving.webp"
-              alt="Astronaut waving in space"
-              width={350}
-              height={350}
-              className="mx-auto shadow-2xl relative z-10"
-              priority
-            />
-          </div>
+                      <div />
+                      <Image
+                        src="/images/astronaut-waving.webp"
+                        alt="Astronaut waving in space"
+                        width={350}
+                        height={350}
+                        className="mx-auto shadow-2xl relative z-10"
+                        priority
+                      />
+                    </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight">
             SPACE
@@ -489,7 +490,7 @@ useEffect(() => {
       ))}
 
       {/* Final Section */}
-      <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-t from-black to-slate-950">
+      <section className="min-h-screen flex items-center justify-center px-4 py-20 relative">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-black mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             MISSION COMPLETE
@@ -510,12 +511,15 @@ useEffect(() => {
             </Button>
 
             <Button
+              asChild
               size="lg"
               variant="outline"
               className="border-slate-600 text-slate-300 hover:bg-slate-800 text-xl px-12 py-6 rounded-full bg-transparent"
             >
-              <Star className="w-6 h-6 mr-3" />
-              EXPLORE BEYOND
+              <Link href="/">
+                <Star className="w-6 h-6 mr-3" />
+                Report
+              </Link>
             </Button>
           </div>
         </div>
