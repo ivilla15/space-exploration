@@ -14,11 +14,7 @@ const planets = [
   {
     id: "mercury",
     name: "Check-In",
-    facts: [
-      "I am doing great!",
-      "Just watched Jurassic World movie it was pretty good.",
-      "Just Finished Section 3 Of AWS Course.",
-    ],
+    facts: ["I am doing great!"],
     subtitle: "Let's Dive In",
     icon: Check,
     size: "w-32 h-32 md:w-48 md:h-48",
@@ -27,7 +23,14 @@ const planets = [
     id: "venus",
     name: "Updates",
     subtitle: "What Have I Been Working On?",
-    facts: ["U-Krew page", "Linter bug fixes", "Count-Up Component", "AWS Course", "Portfolio Website"],
+    facts: [
+      "U-Krew page",
+      "Linter bug fixes",
+      "Count-Up Component",
+      "Sorority Life Page",
+      "Small tweaks such as rec call to action, image optimization, optimizing the web page for users.",
+      "PDF accessibility remediation.",
+    ],
     icon: HardHatIcon,
     size: "w-36 h-36 md:w-52 md:h-52",
   },
@@ -35,16 +38,19 @@ const planets = [
     id: "earth",
     name: "What I've Accomplished",
     subtitle: "Check Them Out!",
-    facts: ["U-Krew Page 100% Done!", "Linter 100% fixed!", "Count-Up Component 100% Done!"],
+    facts: [
+      "U-Krew Page 100% Done!",
+      "Linter 100% fixed!",
+      "Count-Up Component 100% Done!",
+      "Sorority Life Page 100% Done!",
+    ],
     icon: Globe,
     size: "w-36 h-36 md:w-52 md:h-52",
   },
   {
     id: "mars",
     name: "What's On Deck?",
-    facts: [
-      "Redesign Fraternities and Sororities page",
-    ],
+    facts: ["Brand Guideline Page Development"],
     icon: Orbit,
     size: "w-34 h-34 md:w-50 md:h-50",
   },
@@ -106,13 +112,13 @@ export default function SpaceExplorationJourney() {
   }>({});
   const [isDragging, setIsDragging] = useState<string | null>(null);
   const hydrated = useHydrated();
-const [stars, setStars] = useState<Star[]>([]);
+  const [stars, setStars] = useState<Star[]>([]);
 
-useEffect(() => {
-  if (hydrated) {
-    setStars(generateStars(300));
-  }
-}, [hydrated]);
+  useEffect(() => {
+    if (hydrated) {
+      setStars(generateStars(300));
+    }
+  }, [hydrated]);
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const dragStartRef = useRef<{ x: number; y: number } | null>(null);
 
