@@ -14,7 +14,7 @@ const planets = [
   {
     id: "mercury",
     name: "Check-In",
-    facts: ["I am doing great!"],
+    facts: ["Little stressed :/"],
     subtitle: "Let's Dive In",
     icon: Check,
     size: "w-32 h-32 md:w-48 md:h-48",
@@ -50,7 +50,7 @@ const planets = [
   {
     id: "mars",
     name: "What's On Deck?",
-    facts: ["Brand Guideline Page Development"],
+    facts: ["Backend authentication refactoring.", "Final finish of pdfs. "],
     icon: Orbit,
     size: "w-34 h-34 md:w-50 md:h-50",
   },
